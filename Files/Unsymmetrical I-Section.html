@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Calculation for I Section</title>
+        <meta name="MOM Mini Project" content="I - SECTION CALCULATION">
+        <link rel="stylesheet" href="CssFile.css">
+        
+        <!-- 
+             Displaying the calculation part (JavaScript Function) 
+        -->
+        <script>
+            function Calculate(){
+                //Code for sending Bending Moment to HTML
+             document.getElementById("Bm").innerHTML = "<b><h2>Bending Moments : </h2><b>"+Ybar.toFixed(4)+"<br>"+Iarea+"<br>"+Farea+"<br>"+Warea;
+                
+             document.getElementById("Bm2").innerHTML = "Bendinng Stress (1) : "+BM1.toFixed(4)+" N/mm<sup>2</sup><br>"+"Bendinng Stress (2) : "+BM2.toFixed(4)+" N/mm<sup>2</sup><br>"+"Bendinng Stress (3) : "+BM3+" N/mm<sup>2</sup><br>"+"Bendinng Stress (4) : "+BM4.toFixed(4)+" N/mm<sup>2</sup><br>";
+                
+               //Code for sending Shear Stress TO HTML
+            document.getElementById("Sf").innerHTML = "<b><h2>Shear Stresses : </h2><b>";
+                
+            document.getElementById("Sfs").innerHTML = "Shear Stress (1) : "+SH1+" N/mm<sup>2</sup><br>"+"Shear Stress (2) : "+SH2.toFixed(4)+" N/mm<sup>2</sup><br>"+"Shear Stress (3) : "+SH3.toFixed(4)+" N/mm<sup>2</sup><br>"+"Shear Stress (4) : "+SH4.toFixed(4)+" N/mm<sup>2</sup><br>"+"Shear Stress (5) : "+SH5+" N/mm<sup>2</sup><br>";    
+            
+                //Coding for send Values of Moment Resisted by Flanges and web
+            document.getElementById("MoRe").innerHTML = "Moment Resisted By Flanges : "+MRF.toFixed(4)+" N-mm<br>"+"Moment Resisted by I- Section : "+MRI.toFixed(4)+" N-mm<br>"+"Percent Moment Resisted By Flanges : "+PMRF.toFixed(4)+" %<br>"+"Percent Resisted by Web : "+PMRW.toFixed(4)+" %<br>";
+        
+            }
+            
+    
+        //Displaying the values that is taken from user
+            
+            function show(){
+                document.getElementById("show").innerHTML="Height of The Web = "+Wh+" mm <br>"+"Width of The Web = "+Ww+" mm <br>"+"Height of The Flange = "+Fh+" mm <br>"+"Width of The Web = "+Fw+" mm <br>"+"Shear Force = "+SF+" N/mm<sup>2</sup> <br>"+"Bending Moment = "+BM+"N-mm <br>"+'<b>"Refresh the Web Page For Any Change</b>"';}
+           
+        </script>
+        
+        <!-- 
+           Position of the Calculation part and the Image  
+        -->
+        <style>
+            
+/*Style for Solutions*/            
+#Solution {
+position: absolute;
+bottom: 50px;
+left: 860px;    
+text-align: center;
+width: 30%;
+font-family: sans-serif;  
+background-color:lightblue;
+width:30%;
+padding:20px 25px;
+margin-top:7px;
+    
+
+}
+
+}
+</style>
+        
+        
+    </head>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <body style="background-color:#ffffff">
+        
+        <!-- 
+           Top Section   
+        -->
+        <p><div id="a1"><div id="a2">T</div> <div id="a3">-</div> <div id="a4">SECTION</div></div></p>
+    
+        
+    
+    
+    <!-- 
+         Content for Side Navigation Part     
+        -->
+    
+    <div id="mySidenav" class="sidenav">
+                    <a class="closebtn" onclick="closeNav()">&times;</a>
+                    <a href="#">About<br>
+                        <p id="about">Created by Ravi Maurya & Prathamesh Patil.</p>
+                                   
+                    </a>
+                    <a href="#">Services
+                           <p id="about1">24 x 7 </p> </a>
+                    <a href="#">Contact<br><p id="about">ravidmaurya@gmail.com<br>prathameshpatil528@gmail.com</p></a>
+    </div>
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; <B><I>OPEN</I></B></span>
+    
+
+<script>
+    
+    // function for Side navigation part
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+
+       
+    
+    
+<!-- 
+        Taking values from user   
+        -->  
+<script language="Javascript">
+           
+          
+         var Wh=parseInt(prompt("Enter the height of the WEB(mm) : "));
+         var Ww=parseInt(prompt("Enter the width of the WEB(mm) : "));
+         var TFh=parseInt(prompt("Enter the height of the TOP FLANGE(mm) : "));
+         var TFw=parseInt(prompt("Enter the width of the TOP FLANGE(mm) : "));
+         var BFh=parseInt(prompt("Enter the height of the BOTTOM FLANGE(mm) : "));
+         var BFw=parseInt(prompt("Enter the width of the BOTTOM FLANGE(mm) : "));
+         var SF=parseInt(prompt("Enter the Shear Force(kN) : "));
+         var BM=parseInt(prompt("Enter the Bending Moment(kNm) : "));
+         SF=SF*1000; 
+         BM=BM*1000000;
+           
+         //Calculation for Ybar and Moment of Area   
+       var Ybar,Iarea,H,a,BFa,TFa,Wa,BFarea,TFarea,Warea,Y;
+            Wa = Wh*Ww;
+            TFa=TFh*TFw;
+            BFa=BFh*BFw;
+            H = Wh+TFh+BFh;
+            
+            Ybar = ((BFa*(TFh+Wh+(BFh/2)))+(TFa*(TFh/2))+(Wa*(TFh+(Wh/2))))/(BFa+TFa+Wa);
+            Y = H-Ybar;
+            TFarea = (((TFw*Math.pow(TFh,3))/12) + (TFa*Math.pow((Ybar-(TFh/2)),2)));
+            BFarea = (((BFw*Math.pow(BFh,3))/12) + (BFa*Math.pow((Ybar-(BFh/2)),2)));
+            Warea = (((Ww*Math.pow(Wh,3))/12) + (Wa*Math.pow((Y-(Wh/2)),2)));
+            Iarea = TFarea+Warea+BFarea;
+           
+         //Calculation for Bending Moment   
+       var BM1,MB2,BM3,BM4,BM4,b;   
+            BM1 = (BM*Ybar)/Iarea;
+            b = (Ybar-Fh);
+            BM2 = (BM*b)/Iarea;
+            BM3 = 0;
+            BM4 = (BM*(Y))/Iarea;
+            
+          //Calculation for Shear Force 
+       var SH1,SH2,SH3,SH4,SH5,Wa2;
+           SH1=SH5=0;
+           
+           Wa2=(Ybar-Fh)*Ww;
+           SH2=(SF*Fa*(Ybar-(Fh/2)))/(Fw*Iarea);
+           SH3=(SF*Fa*(Ybar-(Fh/2)))/(Ww*Iarea);
+           SH4=(SF*(Fa*(Ybar-(Fh/2))+(Wa2*((Y-(Wh/2))/2))))/(Ww*Iarea);
+    
+        //Calculation for Moment resisted by Flanges and Web
+        var MRF,MRI,PMRF,PMRW,c,d,e;
+            e = (Y-Fh);
+            c = (Math.pow(Y,3)-Math.pow(e,3));
+            MRF = (BM1*c)/3;
+            MRI = (BM1*Iarea)/Ybar;
+            PMRF = (MRF*100)/(MRI);
+            PMRW = (100-PMRF);
+    
+             
+     
+     </script>
+    <br><br><br><br>
+    
+    <!-- 
+          Show Button    
+        -->
+    <div id="show" class="ButtonS ButtonS2">
+        <div onclick="show()"><b><i>Show</i></b></div>
+    </div>
+    <br><br><br>
+    
+    <!-- 
+          Caculation Button    
+        -->
+    <div class="Button Button2">
+        <div onclick="Calculate()"><i><b>Calculate</b></i></div>
+    </div>    
+    <div class="Show"></div>
+        
+    <!-- 
+          Displaying The Values Calculated    
+        -->
+  
+    <div id="Solution">
+    <p id="Values"></p>
+    <p id="Bm"></p>
+    <p id="Bm2"></p>
+    <p id="Sf"></p>
+    <p id="Sfs"></p>
+    <p id="MoRe"></p>
+        </div> 
+        
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

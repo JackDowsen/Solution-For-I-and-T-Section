@@ -1,0 +1,122 @@
+html {
+	margin: 0;
+	padding: 0;
+	}
+body { 
+	color: #555753; 
+	background: #D9853B  
+	margin : 0; 
+	padding: 0;
+	}
+
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+
+
+
+
+#a1 { 
+	margin-top: 0; 
+	text-align: center;
+    color: #558C89;
+	}
+#a2 {
+    font-family: cursive;
+    font-size: 50px; 
+    }
+#a4{
+    font: italic normal 1.4em georgia, sans-serif;
+	letter-spacing: 10px; 
+	margin-bottom: 0; 
+	color: #7D775C;
+}
+
+
+.Button{
+    background-color: lightgray;
+    border: 5px outset #4d4484;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-family: monospace;
+    font-size: 30px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 16px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+.Button2:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+
+.ButtonS{
+    background-color: #555555;;
+    border: 5px outset #4d4484;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-family: monospace;
+    font-size: 30px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 16px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+.ButtonS2:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+#about{
+font-family: monospace;
+    font-size: 15px;
+}
+
+#about1{
+font-family: monospace;
+    font-size: 25px;
+}
