@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Calculation for T Section</title>
+        <meta name="MOM Mini Project" content="T - SECTION CALCULATION">
+        <link rel="stylesheet" href="CssFile.css">
+        
+        <!-- 
+             Displaying the calculation part (JavaScript Function) 
+        -->
+        <script>
+            function Calculate(){
+                //Code for sending Bending Moment to HTML
+             document.getElementById("Bm").innerHTML = "NA Distance from Bottom : "+Y+" mm<br>"+"I<sub>NA</sub> : "+Iarea+" mm<sup>4</sup><br>"+"<b><h2>Bending Moments : </h2><b>";
+                
+             document.getElementById("Bm2").innerHTML = "Bendinng Stress (1) : "+BM1.toFixed(4)+" N/mm<sup>2</sup><br>"+"Bendinng Stress (2) : "+BM2.toFixed(4)+" N/mm<sup>2</sup><br>"+"Bendinng Stress (3) : "+BM3+" N/mm<sup>2</sup><br>"+"Bendinng Stress (4) : "+BM4.toFixed(4)+" N/mm<sup>2</sup><br>";
+                
+               //Code for sending Shear Stress TO HTML
+            document.getElementById("Sf").innerHTML = "<b><h2>Shear Stresses : </h2><b>";
+                
+            document.getElementById("Sfs").innerHTML = "Shear Stress (1) : "+SH1+" N/mm<sup>2</sup><br>"+"Shear Stress (2) : "+SH2.toFixed(4)+" N/mm<sup>2</sup><br>"+"Shear Stress (3) : "+SH3.toFixed(4)+" N/mm<sup>2</sup><br>"+"Shear Stress (4) : "+SH4.toFixed(4)+" N/mm<sup>2</sup><br>"+"Shear Stress (5) : "+SH5+" N/mm<sup>2</sup><br>";  
+            document.getElementById("imgs").innerHTML= '<img src="T Section.png" />';  
+            
+                //Coding for send Values of Moment Resisted by Flanges and web
+            document.getElementById("MoRe").innerHTML = "Moment Resisted By Flanges : "+MRF.toFixed(4)+" N-mm<br>"+"Moment Resisted by I- Section : "+MRI.toFixed(4)+" N-mm<br>"+"Percent Moment Resisted By Flanges : "+PMRF.toFixed(4)+" %<br>"+"Percent Resisted by Web : "+PMRW.toFixed(4)+" %<br>";
+        
+            }
+            
+    
+        //Displaying the values that is taken from user
+            
+            function show(){
+                document.getElementById("show").innerHTML="Height of The Web = "+Wh+" mm <br>"+"Width of The Web = "+Ww+" mm <br>"+"Height of The Flange = "+Fh+" mm <br>"+"Width of The Web = "+Fw+" mm <br>"+"Shear Force = "+SF+" N/mm<sup>2</sup> <br>"+"Bending Moment = "+BM+" N-mm <br>"+'<b>"Refresh the Web Page For Any Change</b>"';}
+           
+        </script>
+        
+        <!-- 
+           Position of the Calculation part and the Image  
+        -->
+        <style>
+            
+/*Style for Solutions*/            
+#Solution {
+position: absolute;
+bottom: 40px;
+left: 860px;    
+text-align: center;
+width: 30%;
+font-family: sans-serif;  
+background-color:lightblue;
+padding:20px 25px;
+margin-top:7px;
+        }        
+            
+ 
+ #show {
+position: absolute;
+bottom: 180px;
+left: 290px;    
+text-align: center;
+font-family: monospace;
+font-size: 24px;
+color: black;
+padding:20px 25px;
+margin-top:7px;
+  border: 1px inset black;
+  border-radius: 30px;    
+        }           
+            
+   
+/*I-section Image*/    
+.image {
+position: absolute;
+top: 650px;
+left: 180px;    
+text-align: center;
+width: 70%;
+font-family: sans-serif;  
+color: navy;
+       }
+            
+.button {
+  padding: 15px 25px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}  
+            
+
+            
+.buttonS {
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.buttonS span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.buttonS span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.buttonS:hover span {
+  padding-right: 25px;
+}
+
+.buttonS:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+</style>
+        
+        
+    </head>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <body style="background-color:#ffffff">
+        
+        <!-- 
+           Top Section   
+        -->
+        <p><div id="a1"><div id="a2">T</div> <div id="a3">-</div> <div id="a4">SECTION</div></div></p>
+    
+        
+    
+    
+    <!-- 
+         Content for Side Navigation Part     
+        -->
+    
+    <div id="mySidenav" class="sidenav">
+                    <a class="closebtn" onclick="closeNav()">&times;</a>
+                    <a href="#">About<br>
+                        <p id="about">Created by Ravi Maurya & Prathamesh Patil.</p>
+                                   
+                    </a>
+                    <a href="#">Services
+                           <p id="about1">24 x 7 </p> </a>
+                    <a href="#">Contact<br><p id="about">ravidmaurya@gmail.com<br>prathameshpatil528@gmail.com</p></a>
+    </div>
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; <B><I>OPEN</I></B></span>
+    
+
+<script>
+    
+    // function for Side navigation part
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+
+       
+    
+    
+<!-- 
+        Taking values from user   
+        -->  
+<script language="Javascript">
+           
+          
+         var Wh=parseInt(prompt("Enter the height of the Web(mm) : "));
+         var Ww=parseInt(prompt("Enter the width of the Web(mm) : "));
+         var Fh=parseInt(prompt("Enter the height of the Flange(mm) : "));
+         var Fw=parseInt(prompt("Enter the width of the Flange(mm) : "));
+         var SF=parseInt(prompt("Enter the Shear Force(kN) : "));
+         var BM=parseInt(prompt("Enter the Bending Moment(kNm) : "));
+         SF=SF*1000; 
+         BM=BM*1000000;
+           
+         //Calculation for Ybar and Moment of Area   
+       var Ybar,Iarea,H,a,Fa,Wa,Farea1,Warea1,Farea2,Warea2,Y;
+            Wa = Wh*Ww;
+            Fa=Fh*Fw;
+            H = Wh+(Fh);
+            
+            Ybar = ((Fa*(Fh/2))+(Wa*(Fh+(Wh/2))))/(Fa+Wa);
+            Y = H-Ybar;
+            Farea1 = (Fw*(Math.pow(Fh,3)))/12;
+            Farea2 = ( Farea1+(Fa*(Math.pow((Ybar-(Fh/2)),2))));
+            Warea1 = (Ww*Math.pow(Wh,3))/12;
+            Warea2 = (Warea1 + (Wa*Math.pow((Y-(Wh/2)),2)));
+            Iarea = Farea2 + Warea2;
+           
+         //Calculation for Bending Moment   
+       var BM1,MB2,BM3,BM4,BM4,b;   
+            BM1 = (BM*Ybar)/Iarea;
+            b = (Ybar-Fh);
+            BM2 = (BM*b)/Iarea;
+            BM3 = 0;
+            BM4 = (BM*(Y))/Iarea;
+            
+          //Calculation for Shear Force 
+       var SH1,SH2,SH3,SH4,SH5,Wa2,Y2;
+           SH1=SH5=0;
+           Y2=Ybar-Fh;
+           Wa2=(Ybar-Fh)*Ww;
+           SH2=(SF*Fa*(Ybar-(Fh/2)))/(Fw*Iarea);
+           SH3=(SF*Fa*(Ybar-(Fh/2)))/(Ww*Iarea);
+           SH4=(SF*(Fa*(Ybar-(Fh/2))+(Wa2*(Y2/2))))/(Ww*Iarea);
+    
+        //Calculation for Moment resisted by Flanges and Web
+        var MRF,MRI,PMRF,PMRW,c,d,e;
+            e = (Y-Fh);
+            c = (Math.pow(Y,3)-Math.pow(e,3));
+            MRF = ((Fw/Y)*BM1*c)/3;
+            MRI = (BM1*Iarea)/Ybar;
+            PMRF = (MRF*100)/(MRI);
+            PMRW = (100-PMRF);
+    
+             
+     
+     </script>
+    <br><br><br><br>
+    
+    <!-- 
+          Show Button    
+        -->
+   <div>
+        <button class="buttonS" onclick="show()" title="Click Me to see the Values Entered"><span><b><i>Show</i></b></span></div>
+    </div><br>
+    <div id="show"></div>
+   
+    <br><br><br>
+    
+    
+    <!-- 
+          Caculation Button    
+        -->
+    <div >
+        <button class="button" onclick="Calculate()" title="Click Me to get the Solution"><i><b>Calculate</b></i></button>
+    </div>    
+        
+    <!--  
+          Displaying The Values Calculated    
+        -->
+  
+    <div id="Solution">
+    <p id="Values"></p>
+    <p id="Bm"></p>
+    <p id="Bm2"></p>
+    <p id="Sf"></p>
+    <p id="Sfs"></p>
+    <p id="MoRe"></p>
+        </div> 
+    <!-- 
+          Adding Image    
+        -->
+    <div id="imgs" class="image">
+    
+    </div>
+        
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

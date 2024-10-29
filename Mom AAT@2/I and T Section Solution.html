@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Solution For I and T Section</title>
+        <meta name="MOM Mini Project" content="I & T - SECTION CALCULATION">
+        <link rel="stylesheet" href="Files/CssFile.css">
+        
+        <style>
+.button1 {
+  border-radius: 4px;
+  background-color: salmon;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 24px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button1 span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button1 span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button1:hover span {
+  padding-right: 25px;
+}
+
+.button1:hover span:after {
+  opacity: 1;
+  right: 0;
+}   
+            
+            
+            
+
+.button2 {
+  border-radius: 4px;
+  background-color: darkcyan;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 24px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button2 span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button2 span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button2:hover span {
+  padding-right: 25px;
+}
+
+.button2:hover span:after {
+  opacity: 1;
+  right: 0;
+}            
+            
+            
+            
+            
+            
+.imageI {
+position: absolute;
+top: 142px;
+left: 200px;    
+text-align: center;
+width: 37%;
+font-family: sans-serif;  
+color: navy;
+       }            
+          
+.imageT {
+position: absolute;
+top: 155px;
+left: 800px;    
+text-align: center;
+width: 33%;
+font-family: sans-serif;  
+color: navy;
+       }            
+        </style>
+    </head>
+    <body>
+        
+        
+        <!-- 
+           Top Section   
+        -->
+        <p><div id="a1"><div id="a2">I & T</div> <div id="a3">-</div> <div id="a4">SECTION</div></div></p>
+    
+        
+    
+    
+    <!-- 
+         Content for Side Navigation Part     
+        -->
+    
+    <div id="mySidenav" class="sidenav">
+                    <a class="closebtn" onclick="closeNav()">&times;</a>
+                    <a href="#">About<br>
+                        <p id="about">Created by Ravi Maurya & Prathamesh Patil.</p>
+                                   
+                    </a>
+                    <a href="#">Services
+                           <p id="about1">24 x 7 </p> </a>
+                    <a href="#">Contact<br><p id="about">ravidmaurya@gmail.com<br>prathameshpatil528@gmail.com</p></a>
+    </div>
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; <B><I>OPEN</I></B></span>
+    
+
+<script>
+    
+    // function for Side navigation part
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+    <br><br><br><br><br>
+    <a href="Files/I-Section.html"> <button class="button1" title="Click Me to get Solution for I-Section"><span>I-SECTION</span></button></a><br><br><br><br><br><br><br><br>
+    <a href="Files/T-SECTION.html"><button class="button2" title="Click Me to get Solution for T-Section"><span>T-SECTION</span></button></a>
+        
+     <img class="imageI" src="Files/I-SECTION-1.1.jpg"><br>
+    <img class="imageT" src="Files/T%20Section1.1.png">
+    </body>
+</html>
